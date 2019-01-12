@@ -61,3 +61,9 @@ variable "switchrole_url" {
   description = "URL to the IAM console to switch to a role"
   default     = "https://signin.aws.amazon.com/switchrole?account=%s&roleName=%s&displayName=%s"
 }
+
+variable "max_session_duration_seconds" {
+  type        = "string"
+  description = "The maximum length of an assume role session.  Default is 4h (14,400s)"
+  default     = "14400"
+}

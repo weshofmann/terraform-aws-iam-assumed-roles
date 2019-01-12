@@ -63,3 +63,8 @@ output "switchrole_readonly_url" {
   description = "URL to the IAM console to switch to the readonly role"
   value       = "${local.enabled ? format(var.switchrole_url, data.aws_caller_identity.current.account_id, local.role_readonly_name, local.role_readonly_name) : ""}"
 }
+
+output "max_session_duration_seconds" {
+  description = "maximum length of assume role session in seconds."
+  value       = "${var.max_session_duration_seconds}"
+}

@@ -208,9 +208,10 @@ resource "aws_iam_group" "admin" {
 }
 
 resource "aws_iam_role" "admin" {
-  count              = "${local.enabled ? 1 : 0}"
-  name               = "${module.admin_label.id}"
-  assume_role_policy = "${join("", data.aws_iam_policy_document.role_trust.*.json)}"
+  count                = "${local.enabled ? 1 : 0}"
+  name                 = "${module.admin_label.id}"
+  assume_role_policy   = "${join("", data.aws_iam_policy_document.role_trust.*.json)}"
+  max_session_duration = "${var.max_session_duration_seconds}"
 }
 
 resource "aws_iam_group_policy_attachment" "assume_role_admin" {
